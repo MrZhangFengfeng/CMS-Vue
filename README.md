@@ -1,4 +1,4 @@
-# cms-vue
+# ele-crm
 
 ## Project setup
 ```
