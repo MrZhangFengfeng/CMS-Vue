@@ -36,7 +36,6 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   .el-header {
     padding: 0;
@@ -54,6 +53,9 @@ body {
       height: 980px;
       width: 150px !important;
       background-color: rgb(84, 92, 100);
+    }
+    .el-main {
+      margin-left: 160px;
     }
   }
 }
