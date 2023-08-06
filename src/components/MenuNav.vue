@@ -64,11 +64,11 @@ export default {
             {
               subGroupLabel: "我的会员",
               subMenuList: [
-                {
-                  id: "member",
-                  path: "/member",
-                  subItemlabel: "会员首页",
-                },
+                // {
+                //   id: "member",
+                //   path: "/member",
+                //   subItemlabel: "会员首页",
+                // },
                 {
                   id: "member-list",
                   path: "/member/member-list",
