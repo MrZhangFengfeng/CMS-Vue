@@ -81,8 +81,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .business-over-view-box {
-  height: 220px;
-  overflow: hidden;
+  .box-card {
+    height: 220px;
+  }
 }
 .header-box {
   height: 20px;
