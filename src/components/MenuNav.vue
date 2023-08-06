@@ -9,12 +9,34 @@
     @open="handleOpen"
     @close="handleClose"
   >
-    <el-menu-item :index="menu.path" v-for="menu in menuList" :key="menu.id">
-      <template slot="title">
-        <i :class="menu.icon"></i>
-        <span>{{ menu.title }}</span>
-      </template>
-    </el-menu-item>
+    <div v-for="menu in menuList" :key="menu.id">
+      <div v-if="menu.subMenu">
+        <el-submenu>
+          <template slot="title">
+            <i :class="menu.icon"></i>
+            <span>{{ menu.title }}</span>
+          </template>
+          <el-menu-item-group
+            v-for="subMenu in menu.subMenu"
+            :key="subMenu.subLabel"
+          >
+            <template slot="title">{{ menu.subGroupLabel }}</template>
+            <el-menu-item
+              :index="subMenuItem.path"
+              v-for="subMenuItem in subMenu.subMenuList"
+              :key="subMenuItem.id"
+              >{{ subMenuItem.subItemlabel }}</el-menu-item
+            >
+          </el-menu-item-group>
+        </el-submenu>
+      </div>
+      <div v-else>
+        <el-menu-item :index="menu.path">
+          <i :class="menu.icon"></i>
+          <span>{{ menu.title }}</span>
+        </el-menu-item>
+      </div>
+    </div>
   </el-menu>
 </template>
 
@@ -36,25 +58,52 @@ export default {
         {
           id: "2",
           title: "会员",
-          path: "about",
+          path: "",
           icon: "el-icon-setting",
+          subMenu: [
+            {
+              subGroupLabel: "sumenr",
+              subMenuList: [
+                {
+                  id: "member",
+                  path: "/member",
+                  subItemlabel: "会员首页",
+                },
+                {
+                  id: "member-list",
+                  path: "/member/member-list",
+                  subItemlabel: "会员列表",
+                },
+                {
+                  id: "member-manage",
+                  path: "/member/member-manage",
+                  subItemlabel: "会员管理",
+                },
+                {
+                  id: "crowd-tag",
+                  path: "/member/crowd-tag",
+                  subItemlabel: "人群标签",
+                },
+              ],
+            },
+          ],
         },
         {
           id: "3",
           title: "营销",
-          path: "/",
+          path: "/promot",
           icon: "el-icon-location",
         },
         {
           id: "4",
           title: "推广",
-          path: "about",
+          path: "tuiguang",
           icon: "el-icon-setting",
         },
         {
           id: "5",
           title: "数据",
-          path: "/",
+          path: "data",
           icon: "el-icon-location",
         },
         {

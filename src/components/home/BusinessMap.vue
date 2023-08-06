@@ -6,7 +6,7 @@
 
 <script>
 import * as echarts from "echarts";
-import chinaJson from "../../assets/map/china";
+import chinaJson from "../../assets/map/china.json";
 export default {
   data() {
     return {
