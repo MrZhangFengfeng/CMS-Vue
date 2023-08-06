@@ -39,14 +39,14 @@ export default {
         {
           type: "dish",
           icon: "https://img.alicdn.com/imgextra/i2/O1CN01ORV9Bp1ubhQYCthMX_!!6000000006056-2-tps-102-105.png",
-          title: "饿了么特价菜",
+          title: "鸿雁特价菜",
           desc: "提升交易订单量",
           path: "",
         },
         {
           type: "coupon",
           icon: "https://img.alicdn.com/imgextra/i2/O1CN01ozjYeZ1xbeEAWUerz_!!6000000006462-2-tps-105-105.png",
-          title: "饿了么会员卡",
+          title: "鸿雁会员卡",
           desc: "提升会员交易频次",
           path: "",
         },

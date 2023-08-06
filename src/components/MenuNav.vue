@@ -20,7 +20,7 @@
             v-for="subMenu in menu.subMenu"
             :key="subMenu.subLabel"
           >
-            <template slot="title">{{ menu.subGroupLabel }}</template>
+            <template slot="title">{{ subMenu.subGroupLabel }}</template>
             <el-menu-item
               :index="subMenuItem.path"
               v-for="subMenuItem in subMenu.subMenuList"
@@ -62,7 +62,7 @@ export default {
           icon: "el-icon-setting",
           subMenu: [
             {
-              subGroupLabel: "sumenr",
+              subGroupLabel: "我的会员",
               subMenuList: [
                 {
                   id: "member",
@@ -83,6 +83,36 @@ export default {
                   id: "crowd-tag",
                   path: "/member/crowd-tag",
                   subItemlabel: "人群标签",
+                },
+              ],
+            },
+            {
+              subGroupLabel: "会员运营",
+              subMenuList: [
+                {
+                  id: "member-point",
+                  path: "/member/member-point",
+                  subItemlabel: "积分规则",
+                },
+                {
+                  id: "member-pay",
+                  path: "/member/member-pay",
+                  subItemlabel: "付费会员",
+                },
+              ],
+            },
+            {
+              subGroupLabel: "会员基础",
+              subMenuList: [
+                {
+                  id: "/member-card",
+                  path: "/member/member-card",
+                  subItemlabel: "会员卡",
+                },
+                {
+                  id: "member-grade",
+                  path: "/member/member-grade",
+                  subItemlabel: "会员等级",
                 },
               ],
             },

@@ -1,10 +1,7 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <img
-        src="https://img.alicdn.com/imgextra/i3/O1CN01OvaMgO20wfFXp72K8_!!6000000006914-2-tps-240-75.png"
-        alt=""
-      />
+      <img src="../assets/logo.png" alt="" />
       <div class="user-info">
         <div class="brand-name">[品牌] {{ user.brandName }}</div>
         <div class="toggle-btn">切换</div>
@@ -47,8 +44,8 @@ export default {
     line-height: 26px;
     padding-right: 20px;
     img {
-      width: 83px;
-      height: 26px;
+      width: 85px;
+      height: 30px;
     }
     .user-info {
       display: flex;
