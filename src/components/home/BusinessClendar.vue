@@ -5,7 +5,9 @@
         <div class="title" style="float: left">营销日历</div>
       </div>
 
-      <div class="business-over-view-content"></div>
+      <div class="business-clendar-view-content">
+        <el-empty :image-size="100" description="暂无数据"></el-empty>
+      </div>
     </el-card>
   </div>
 </template>
@@ -34,8 +36,11 @@ export default {
 .header-box {
   height: 20px;
 }
-.business-over-view-content {
-  display: flex;
-  justify-content: space-between;
+.business-clendar-view-content {
+  text-align: center;
+  .el-empty {
+    padding: 0;
+    transform: translateY(-20px);
+  }
 }
 </style>

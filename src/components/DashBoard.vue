@@ -11,13 +11,7 @@
       <el-col :span="6"><BusinessGuide /></el-col>
     </el-row>
 
-    <el-card class="box-card">
-      <div slot="header" class="clearfix header-box">
-        <div class="title" style="float: left">功能推荐</div>
-      </div>
-
-      <div class="business-over-view-content"></div>
-    </el-card>
+    <BusinessRec />
   </div>
 </template>
 
@@ -27,6 +21,7 @@ import BusinessClendar from "@/components/home/BusinessClendar.vue";
 import BusinessGuide from "@/components/home/BusinessGuide.vue";
 import BusinessMap from "@/components/home/BusinessMap.vue";
 import BusinessData from "@/components/home/BusinessData.vue";
+import BusinessRec from "@/components/home/BusinessRec.vue";
 
 export default {
   name: "DashBoard",
@@ -36,6 +31,7 @@ export default {
     BusinessMap,
     BusinessData,
     BusinessGuide,
+    BusinessRec,
   },
   props: {
     msg: String,
