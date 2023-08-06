@@ -89,6 +89,14 @@
           </div>
         </el-col>
       </el-row>
+      <el-row :gutter="20" class="query-board-row">
+        <el-col :span="24">
+          <div class="query-item right">
+            <el-button type="primary" icon="el-icon-search">查询</el-button>
+            <el-button icon="el-icon-refresh">重置</el-button>
+          </div>
+        </el-col>
+      </el-row>
     </el-card>
   </div>
 </template>
@@ -190,6 +198,9 @@ export default {
   .query-item {
     display: flex;
     align-items: center;
+    &.right {
+      justify-content: end;
+    }
     .label {
       font-size: 14px;
       color: #333333;
