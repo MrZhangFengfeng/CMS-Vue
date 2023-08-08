@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <DashBoard />
-  </div>
+    <div class="home">
+        <DashBoard />
+    </div>
 </template>
 
 <script>
@@ -9,9 +9,9 @@
 import DashBoard from "@/components/DashBoard.vue";
 
 export default {
-  name: "HomeView",
-  components: {
-    DashBoard,
-  },
+    name: "HomeView",
+    components: {
+        DashBoard,
+    },
 };
 </script>

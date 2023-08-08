@@ -1,5 +1,5 @@
 <template>
-  <MemberOverView />
+    <MemberOverView />
 </template>
 
 <script>
@@ -7,9 +7,9 @@
 import MemberOverView from "@/components/member/MemberOverView.vue";
 
 export default {
-  name: "MemberIndex",
-  components: {
-    MemberOverView,
-  },
+    name: "MemberIndex",
+    components: {
+        MemberOverView,
+    },
 };
 </script>
