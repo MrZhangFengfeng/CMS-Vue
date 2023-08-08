@@ -104,7 +104,13 @@
                             type="primary"
                             icon="el-icon-search"
                             @click="queryCustomerList"
-                            >查询</el-button
+                            >查询(EventBus)</el-button
+                        >
+                        <el-button
+                            type="primary"
+                            icon="el-icon-search"
+                            @click="queryCustomerListByVuex"
+                            >查询(将数据更新到Vuex)</el-button
                         >
                         <el-button
                             icon="el-icon-refresh"
@@ -121,6 +127,8 @@
 <script>
 // @ is an alias to /src
 import mockData from "@/mock/member.js";
+import Bus from "@/utils/Bus";
+import CONSTANT from "@/utils/constant";
 
 export default {
     name: "CustomListQuery",
@@ -198,9 +206,20 @@ export default {
                 resource: this.resource,
                 consumeTime: this.consumeTime,
             };
-            this.$alert(`你查询的条件是：${JSON.stringify(params)}`, "查询", {
-                confirmButtonText: "确定",
-            });
+
+            Bus.$emit(CONSTANT.SEND_CUSTOMER_QUERY_PARAMS, params);
+        },
+        queryCustomerListByVuex: function () {
+            const params = {
+                nameOrPhone: this.nameOrPhone,
+                crowdTag: this.crowdTag,
+                store: this.store,
+                priceStart: this.priceStart,
+                priceEnd: this.priceEnd,
+                resource: this.resource,
+                consumeTime: this.consumeTime,
+            };
+            this.$store.dispatch("updateCustomerQueryParams", params);
         },
         clearQueryParams: function () {
             this.nameOrPhone = "";

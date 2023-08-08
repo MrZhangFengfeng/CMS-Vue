@@ -22,17 +22,7 @@
                 </el-table-column>
                 <el-table-column prop="price" label="笔单价"></el-table-column>
                 <el-table-column prop="resource" label="来源"></el-table-column>
-                <el-table-column
-                    prop="tag"
-                    label="状态"
-                    width="100"
-                    :filters="[
-                        { text: '启用中', value: 'USE' },
-                        { text: '未启用', value: 'UN_USE' },
-                    ]"
-                    :filter-method="filterTag"
-                    filter-placement="bottom-end"
-                >
+                <el-table-column prop="tag" label="状态" width="100">
                     <template slot-scope="scope">
                         <el-tag
                             :type="
@@ -53,7 +43,7 @@
                         <el-button
                             size="mini"
                             type="primary"
-                            @click="handleDelete(scope.$index, scope.row)"
+                            @click="handleAddTag(scope.$index, scope.row)"
                             >添加人群标签</el-button
                         >
                     </template>
@@ -72,12 +62,45 @@
                 </el-pagination>
             </div>
         </el-card>
+
+        <el-dialog
+            title="添加人群标签"
+            :visible.sync="dialogVisible"
+            width="30%"
+            :before-close="handleClose"
+        >
+            <div class="dialog-content">
+                <div class="label">人群标签:</div>
+                <el-select
+                    v-model="crowdTagList"
+                    filterable
+                    multiple
+                    placeholder="请选择"
+                >
+                    <el-option
+                        v-for="item in crowdTagOptions"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    >
+                    </el-option>
+                </el-select>
+            </div>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="cancelSubmitAddTag">取 消</el-button>
+                <el-button type="primary" @click="submitAddTag"
+                    >确 定</el-button
+                >
+            </span>
+        </el-dialog>
     </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import mockData from "@/mock/member.js";
+import Bus from "@/utils/Bus";
+import CONSTANT from "@/utils/constant";
 
 export default {
     name: "CustomerList",
@@ -89,17 +112,77 @@ export default {
             currentPage: 1,
             pageSize: 10,
             pageSizeList: [10, 20, 30, 40],
+            crowdTagOptions: [
+                {
+                    value: "1",
+                    label: "foo",
+                },
+                {
+                    value: "2",
+                    label: "bar",
+                },
+            ],
+            dialogVisible: false,
+            currentCid: "",
+            crowdTagList: [],
         };
     },
     mounted: function () {
         this.customerList = mockData.customerList;
+        // 监听事件的触发
+        Bus.$on(CONSTANT.SEND_CUSTOMER_QUERY_PARAMS, (params) => {
+            console.log("这是接收到的数据：", params);
+            this.$alert(
+                `这是从兄弟组件中传递过来的查询参数：${JSON.stringify(params)}`,
+                "EventBus 组件通信",
+                {
+                    confirmButtonText: "确定",
+                }
+            );
+        });
     },
-    methods: {},
+    beforeDestroy() {
+        // 取消监听
+        Bus.$off(CONSTANT.SEND_CUSTOMER_QUERY_PARAMS);
+    },
+    methods: {
+        handleAddTag: function (index, row) {
+            console.log("index", index);
+            console.log("row", row);
+            this.dialogVisible = true;
+            this.currentCid = row.cid;
+        },
+        submitAddTag: function () {
+            console.log("crowdTagList", this.crowdTagList);
+            this.$notify({
+                title: "添加标签",
+                message: `给顾客${
+                    this.currentCid
+                }添加的标签ID是：${JSON.stringify(this.crowdTagList)}`,
+                type: "success",
+            });
+            this.currentCid = "";
+            this.crowdTagList = [];
+            this.dialogVisible = false;
+        },
+        cancelSubmitAddTag: function () {
+            this.currentCid = "";
+            this.crowdTagList = [];
+            this.dialogVisible = false;
+        },
+    },
 };
 </script>
 <style scoped lang="scss">
 .crowd-pageination {
     float: right;
     padding: 20px;
+}
+.dialog-content {
+    display: flex;
+    align-items: center;
+    .label {
+        margin-right: 10px;
+    }
 }
 </style>
