@@ -8,7 +8,8 @@
                 style="width: 100%"
                 @selection-change="handleSelectionChange"
             >
-                <el-table-column type="selection" width="55"> </el-table-column>
+                <el-table-column type="selection" width="120">
+                </el-table-column>
                 <el-table-column label="顾客ID" width="120">
                     <template slot-scope="scope">{{ scope.row.cid }}</template>
                 </el-table-column>
@@ -16,13 +17,22 @@
                 </el-table-column>
                 <el-table-column
                     prop="count"
+                    width="120"
                     label="消费次数"
                     show-overflow-tooltip
                 >
                 </el-table-column>
-                <el-table-column prop="price" label="笔单价"></el-table-column>
-                <el-table-column prop="resource" label="来源"></el-table-column>
-                <el-table-column prop="tag" label="状态" width="100">
+                <el-table-column
+                    prop="price"
+                    label="笔单价"
+                    width="120"
+                ></el-table-column>
+                <el-table-column
+                    prop="resource"
+                    label="来源"
+                    width="120"
+                ></el-table-column>
+                <el-table-column prop="tag" label="状态" width="120">
                     <template slot-scope="scope">
                         <el-tag
                             :type="
