@@ -50,9 +50,10 @@ body {
         .el-aside {
             position: fixed;
             top: 60px;
-            height: 980px;
+            height: 100%;
             width: 150px !important;
             background-color: rgb(84, 92, 100);
+            scrollbar-width: 0;
         }
         .el-main {
             margin-left: 160px;

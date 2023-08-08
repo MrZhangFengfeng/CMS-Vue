@@ -11,7 +11,7 @@
     >
         <div v-for="menu in menuList" :key="menu.id">
             <div v-if="menu.subMenu">
-                <el-submenu>
+                <el-submenu :index="menu.path">
                     <template slot="title">
                         <i :class="menu.icon"></i>
                         <span>{{ menu.title }}</span>
@@ -60,7 +60,7 @@ export default {
                 {
                     id: "2",
                     title: "会员",
-                    path: "",
+                    path: "/member",
                     icon: "el-icon-setting",
                     subMenu: [
                         {
@@ -96,11 +96,6 @@ export default {
                                     path: "/member/member-card",
                                     subItemlabel: "会员卡",
                                 },
-                                {
-                                    id: "member-grade",
-                                    path: "/member/member-grade",
-                                    subItemlabel: "会员等级",
-                                },
                             ],
                         },
                     ],
@@ -108,8 +103,35 @@ export default {
                 {
                     id: "3",
                     title: "营销",
-                    path: "/promot",
+                    path: "/marketing",
                     icon: "el-icon-location",
+                    subMenu: [
+                        {
+                            subGroupLabel: "营销活动",
+                            subMenuList: [
+                                {
+                                    id: "activity-list",
+                                    path: "/marketing/activity-list",
+                                    subItemlabel: "营销创建",
+                                },
+                                {
+                                    id: "marketing-voucher",
+                                    path: "/marketing/voucher",
+                                    subItemlabel: "优惠券",
+                                },
+                            ],
+                        },
+                        {
+                            subGroupLabel: "营销效果",
+                            subMenuList: [
+                                {
+                                    id: "effect-summary",
+                                    path: "/marketing/effect-summary",
+                                    subItemlabel: "效果概览",
+                                },
+                            ],
+                        },
+                    ],
                 },
                 {
                     id: "4",
@@ -131,6 +153,14 @@ export default {
                 },
             ],
         };
+    },
+    methods: {
+        handleOpen(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        handleClose(key, keyPath) {
+            console.log(key, keyPath);
+        },
     },
 };
 </script>
