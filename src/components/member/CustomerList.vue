@@ -37,7 +37,7 @@
                     <template slot-scope="scope">
                         <el-button
                             size="mini"
-                            @click="handleEdit(scope.$index, scope.row)"
+                            @click="handleViewDetail(scope.$index, scope.row)"
                             >详情</el-button
                         >
                         <el-button
@@ -169,6 +169,13 @@ export default {
             this.currentCid = "";
             this.crowdTagList = [];
             this.dialogVisible = false;
+        },
+        handleViewDetail: function (index, row) {
+            console.log("index", index);
+            console.log("row", row);
+            this.$router.push(
+                `/member/member-list-detail?customerId=${row.cid}`
+            );
         },
     },
 };

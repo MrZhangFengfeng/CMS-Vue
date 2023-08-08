@@ -66,25 +66,10 @@ export default {
                         {
                             subGroupLabel: "我的会员",
                             subMenuList: [
-                                // {
-                                //   id: "member",
-                                //   path: "/member",
-                                //   subItemlabel: "会员首页",
-                                // },
                                 {
                                     id: "member-list",
                                     path: "/member/member-list",
                                     subItemlabel: "会员列表",
-                                },
-                                {
-                                    id: "member-manage",
-                                    path: "/member/member-manage",
-                                    subItemlabel: "会员管理",
-                                },
-                                {
-                                    id: "crowd-tag",
-                                    path: "/member/crowd-tag",
-                                    subItemlabel: "人群标签",
                                 },
                             ],
                         },
@@ -92,8 +77,8 @@ export default {
                             subGroupLabel: "会员运营",
                             subMenuList: [
                                 {
-                                    id: "member-point",
-                                    path: "/member/member-point",
+                                    id: "member-point-rule",
+                                    path: "/member/member-point-rule",
                                     subItemlabel: "积分规则",
                                 },
                                 {

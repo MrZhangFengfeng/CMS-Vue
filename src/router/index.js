@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import MemberView from "../views/MemberView.vue";
 import MemberList from "../views/MemberList.vue";
+import MemberListDetail from "../views/MemberListDetail.vue";
+import MemberPointRule from "../views/MemberPointRule.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +23,16 @@ const routes = [
         path: "/member/member-list",
         name: "memberList",
         component: MemberList,
+    },
+    {
+        path: "/member/member-list-detail",
+        name: "MemberListDetail",
+        component: MemberListDetail,
+    },
+    {
+        path: "/member/member-point-rule",
+        name: "MemberPointRule",
+        component: MemberPointRule,
     },
     // {
     //   path: "/member",
