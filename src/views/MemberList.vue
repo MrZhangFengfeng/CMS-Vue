@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-card>
-      <el-row :gutter="20" class="query-board-row">
+      <el-row :gutter="10" class="query-board-row">
         <el-col :span="8">
           <div class="query-item">
             <div class="label">顾客信息:</div>
@@ -35,24 +35,24 @@
           </div>
         </el-col>
       </el-row>
-      <el-row :gutter="20" class="query-board-row">
+      <el-row :gutter="10" class="query-board-row">
         <el-col :span="8">
           <div class="query-item">
             <div class="label">笔单价:</div>
             <el-input-number
-              v-model="num"
+              v-model="priceStart"
               controls-position="right"
               @change="handleChange"
-              :min="1"
+              :min="0"
               :max="100000"
               size="small"
             ></el-input-number>
             <div class="gap">至</div>
             <el-input-number
-              v-model="num"
+              v-model="priceEnd"
               controls-position="right"
               @change="handleChange"
-              :min="1"
+              :min="0"
               :max="100000"
               size="small"
             ></el-input-number>
@@ -62,7 +62,7 @@
           <div class="query-item">
             <div class="label">上次消费:</div>
             <el-date-picker
-              v-model="value2"
+              v-model="consumeTime"
               type="daterange"
               align="right"
               unlink-panels
@@ -89,7 +89,7 @@
           </div>
         </el-col>
       </el-row>
-      <el-row :gutter="20" class="query-board-row">
+      <el-row :gutter="10" class="query-board-row">
         <el-col :span="24">
           <div class="query-item right">
             <el-button type="primary" icon="el-icon-search">查询</el-button>
@@ -98,11 +98,77 @@
         </el-col>
       </el-row>
     </el-card>
+
+    <el-card>
+      <el-table
+        ref="multipleTable"
+        :data="customerList"
+        tooltip-effect="dark"
+        style="width: 100%"
+        @selection-change="handleSelectionChange"
+      >
+        <el-table-column type="selection" width="55"> </el-table-column>
+        <el-table-column label="顾客ID" width="120">
+          <template slot-scope="scope">{{ scope.row.cid }}</template>
+        </el-table-column>
+        <el-table-column prop="grade" label="会员等级" width="120">
+        </el-table-column>
+        <el-table-column prop="count" label="消费次数" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="price" label="笔单价"></el-table-column>
+        <el-table-column prop="resource" label="来源"></el-table-column>
+        <el-table-column
+          prop="tag"
+          label="状态"
+          width="100"
+          :filters="[
+            { text: '启用中', value: 'USE' },
+            { text: '未启用', value: 'UN_USE' },
+          ]"
+          :filter-method="filterTag"
+          filter-placement="bottom-end"
+        >
+          <template slot-scope="scope">
+            <el-tag
+              :type="scope.row.tag === 'USE' ? 'primary' : 'success'"
+              disable-transitions
+              >{{ scope.row.tag }}</el-tag
+            >
+          </template>
+        </el-table-column>
+        <el-table-column label="操作">
+          <template slot-scope="scope">
+            <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
+              >详情</el-button
+            >
+            <el-button
+              size="mini"
+              type="primary"
+              @click="handleDelete(scope.$index, scope.row)"
+              >添加人群标签</el-button
+            >
+          </template>
+        </el-table-column>
+      </el-table>
+      <div class="crowd-pageination">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="pageSizeList"
+          :page-size="pageSize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="customerList.length"
+        >
+        </el-pagination>
+      </div>
+    </el-card>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import mockData from "@/mock/member.js";
 
 export default {
   name: "MemberList",
@@ -112,7 +178,10 @@ export default {
       nameOrPhone: "",
       crowdTag: "",
       store: "",
+      priceStart: undefined,
+      priceEnd: undefined,
       resource: "",
+      consumeTime: [],
       crowdTagOptions: [
         {
           value: "选项1",
@@ -121,18 +190,6 @@ export default {
         {
           value: "选项2",
           label: "双皮奶",
-        },
-        {
-          value: "选项3",
-          label: "蚵仔煎",
-        },
-        {
-          value: "选项4",
-          label: "龙须面",
-        },
-        {
-          value: "选项5",
-          label: "北京烤鸭",
         },
       ],
       pickerOptions: {
@@ -166,29 +223,16 @@ export default {
           },
         ],
       },
-      resourceList: [
-        {
-          value: "选项1",
-          label: "黄金糕",
-        },
-        {
-          value: "选项2",
-          label: "双皮奶",
-        },
-        {
-          value: "选项3",
-          label: "蚵仔煎",
-        },
-        {
-          value: "选项4",
-          label: "龙须面",
-        },
-        {
-          value: "选项5",
-          label: "北京烤鸭",
-        },
-      ],
+      resourceList: [],
+      customerList: [],
+      currentPage: 1,
+      pageSize: 10,
+      pageSizeList: [10, 20, 30, 40],
     };
+  },
+  mounted: function () {
+    this.customerList = mockData.customerList;
+    this.customerResource = mockData.customerResource;
   },
 };
 </script>
@@ -215,5 +259,9 @@ export default {
       margin: 0 10px;
     }
   }
+}
+.crowd-pageination {
+  float: right;
+  padding: 20px;
 }
 </style>
