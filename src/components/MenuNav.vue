@@ -81,11 +81,6 @@ export default {
                                     path: "/member/member-point-rule",
                                     subItemlabel: "积分规则",
                                 },
-                                {
-                                    id: "member-pay",
-                                    path: "/member/member-pay",
-                                    subItemlabel: "付费会员",
-                                },
                             ],
                         },
                         {

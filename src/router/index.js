@@ -5,6 +5,7 @@ import MemberView from "../views/MemberView.vue";
 import MemberList from "../views/MemberList.vue";
 import MemberListDetail from "../views/MemberListDetail.vue";
 import MemberPointRule from "../views/MemberPointRule.vue";
+import MemberCardIndex from "../views/MemberCardIndex.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
         path: "/member/member-point-rule",
         name: "MemberPointRule",
         component: MemberPointRule,
+    },
+    {
+        path: "/member/member-card",
+        name: "MemberCardIndex",
+        component: MemberCardIndex,
     },
     // {
     //   path: "/member",
