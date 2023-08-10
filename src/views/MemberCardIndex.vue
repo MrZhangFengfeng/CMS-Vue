@@ -18,7 +18,13 @@
                             <div>
                                 可配置会员卡名称、会员卡卡面、适用门店等信息
                             </div>
-                            <el-button type="primary">去配置</el-button>
+                            <el-button type="primary">
+                                <el-link
+                                    href="/#/member/member-card/edit"
+                                    style="color: #ffffff"
+                                    >去配置</el-link
+                                >
+                            </el-button>
                         </div>
                     </el-card>
                 </div>

@@ -6,6 +6,7 @@ import MemberList from "../views/MemberList.vue";
 import MemberListDetail from "../views/MemberListDetail.vue";
 import MemberPointRule from "../views/MemberPointRule.vue";
 import MemberCardIndex from "../views/MemberCardIndex.vue";
+import MemberCardEdit from "../views/MemberCardEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
         path: "/member/member-card",
         name: "MemberCardIndex",
         component: MemberCardIndex,
+    },
+    {
+        path: "/member/member-card/edit",
+        name: "MemberCardEdit",
+        component: MemberCardEdit,
     },
     // {
     //   path: "/member",
