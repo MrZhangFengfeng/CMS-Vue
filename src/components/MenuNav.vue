@@ -96,6 +96,12 @@ export default {
                     ],
                 },
                 {
+                    id: "demo",
+                    title: "功能展示",
+                    path: "/demo",
+                    icon: "el-icon-video-camera",
+                },
+                {
                     id: "3",
                     title: "营销",
                     path: "/marketing",

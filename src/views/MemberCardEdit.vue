@@ -27,7 +27,11 @@
                                     v-model="memberCardForm.cardName"
                                 ></el-input>
                             </el-form-item>
-                            <el-form-item label="卡面样式" prop="cardBgType">
+                            <el-form-item
+                                label="卡面样式"
+                                prop="cardBgType"
+                                class="fix-height"
+                            >
                                 <el-radio
                                     v-model="memberCardForm.cardBgType"
                                     label="1"
@@ -38,26 +42,54 @@
                                     label="2"
                                     >按等级不同卡面</el-radio
                                 >
-                                <div>
-                                    <el-upload
-                                        class="member-card-bg-uploader"
-                                        action="https://jsonplaceholder.typicode.com/posts/"
-                                        :show-file-list="false"
-                                        :on-success="handleMemberCardBgSuccess"
-                                        :before-upload="
-                                            beforeMemberCardBgUpload
-                                        "
-                                    >
-                                        <img
-                                            v-if="memberCardBgImgUrl"
-                                            :src="memberCardBgImgUrl"
-                                            class="avatar"
-                                        />
-                                        <i
-                                            v-else
-                                            class="el-icon-plus avatar-uploader-icon"
-                                        ></i>
-                                    </el-upload>
+                                <div class="img-upload-wrap">
+                                    <div class="logo-img-upload">
+                                        <el-upload
+                                            class="member-card-bg-uploader"
+                                            action="https://jsonplaceholder.typicode.com/posts/"
+                                            :show-file-list="false"
+                                            :on-success="
+                                                handleMemberCardBgSuccess
+                                            "
+                                            :before-upload="
+                                                beforeMemberCardBgUpload
+                                            "
+                                        >
+                                            <img
+                                                v-if="memberCardBgImgUrl"
+                                                :src="memberCardBgImgUrl"
+                                                class="avatar"
+                                            />
+
+                                            <i
+                                                v-else
+                                                class="el-icon-plus avatar-uploader-icon"
+                                            ></i>
+                                        </el-upload>
+                                    </div>
+                                    <div class="bg-img-upload">
+                                        <el-upload
+                                            class="member-card-bg-uploader"
+                                            action="https://jsonplaceholder.typicode.com/posts/"
+                                            :show-file-list="false"
+                                            :on-success="
+                                                handleMemberCardBgSuccess
+                                            "
+                                            :before-upload="
+                                                beforeMemberCardBgUpload
+                                            "
+                                        >
+                                            <img
+                                                v-if="memberCardBgImgUrl"
+                                                :src="memberCardBgImgUrl"
+                                                class="avatar"
+                                            />
+                                            <i
+                                                v-else
+                                                class="el-icon-plus avatar-uploader-icon"
+                                            ></i>
+                                        </el-upload>
+                                    </div>
                                 </div>
                             </el-form-item>
                             <el-form-item label="适用门店">
@@ -83,8 +115,6 @@
                                     会员入会时必填的信息，为了避免影响入会的效率尽量减少必填项，其中生日信息可用于生日礼营销活动
                                 </div>
                             </el-form-item>
-                            <el-form-item label="入会协议" prop="agreement">
-                            </el-form-item>
                             <el-form-item>
                                 <el-button
                                     type="primary"
@@ -100,7 +130,9 @@
                     <el-card>
                         <el-tabs v-model="previewStyle">
                             <el-tab-pane label="入会前" name="noMember"
-                                >用户管理</el-tab-pane
+                                >我是根据入会信息数量就算得出：{{
+                                    joinMemberInfoCount
+                                }}</el-tab-pane
                             >
                             <el-tab-pane label="入会后" name="Member"
                                 >配置管理</el-tab-pane
@@ -148,6 +180,20 @@ export default {
         };
     },
     mounted: function () {},
+    computed: {
+        joinMemberInfoCount: function () {
+            return this.memberCardForm.joinMemberInfo.length;
+        },
+    },
+    watch: {
+        "memberCardForm.joinMemberInfo": function (val, oldVal) {
+            if (val.length > oldVal.length) {
+                this.$message.success("通过watch 我发现新的比旧的多");
+            } else {
+                this.$message.error("通过watch 我发现新的比旧的少");
+            }
+        },
+    },
     methods: {
         handleMemberCardBgSuccess(res) {
             console.log("sss", res);
@@ -181,6 +227,23 @@ export default {
 .breadcrumb {
     margin-bottom: 20px;
 }
+.img-upload-wrap {
+    position: relative;
+    .logo-img-upload {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        .avatar-uploader-icon {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+        }
+    }
+    .bg-img-upload {
+        position: absolute;
+    }
+}
 .member-card-bg-uploader {
     .el-upload {
         border-radius: 6px;
@@ -205,5 +268,8 @@ export default {
         height: 178px;
         display: block;
     }
+}
+.fix-height {
+    height: 200px;
 }
 </style>

@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import DemoView from "../views/DemoView.vue";
+import LifeCycleView from "../views/demo/LifeCycleView.vue";
 import MemberView from "../views/MemberView.vue";
 import MemberList from "../views/MemberList.vue";
 import MemberListDetail from "../views/MemberListDetail.vue";
@@ -15,6 +17,15 @@ const routes = [
         path: "/",
         name: "home",
         component: HomeView,
+    },
+    {
+        path: "/demo",
+        name: "demo",
+        component: DemoView,
+    },
+    {
+        path: "/demo/life-cycle",
+        component: LifeCycleView,
     },
     {
         path: "/member",
