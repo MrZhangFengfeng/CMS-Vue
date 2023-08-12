@@ -39,7 +39,7 @@ export default {
                         {
                             title: "watch 和 computed",
                             icon: "el-icon-sugar",
-                            href: "/#/demo/life-cycle",
+                            href: "/#/demo/watch-computed",
                         },
                         {
                             title: "组件间数据传递",
