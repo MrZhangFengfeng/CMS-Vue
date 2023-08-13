@@ -69,7 +69,7 @@ export default {
                             href: "/#/demo/life-cycle",
                         },
                         {
-                            title: "响应式原理",
+                            title: "响应式原理/双向绑定的原理",
                             icon: "el-icon-sunrise",
                             href: "/#/demo/life-cycle",
                         },
@@ -83,13 +83,18 @@ export default {
                             icon: "el-icon-present",
                             href: "/#/demo/life-cycle",
                         },
+                        {
+                            title: "样式scoped的原理",
+                            icon: "el-icon-present",
+                            href: "/#/demo/life-cycle",
+                        },
                     ],
                 },
                 {
                     label: "生态系统",
                     subInstanceList: [
                         {
-                            title: "生命周期",
+                            title: "前端监控",
                             icon: "el-icon-ice-cream-round",
                             href: "/#/demo/life-cycle",
                         },
@@ -101,6 +106,37 @@ export default {
                         {
                             title: "组件间数据传递",
                             icon: "el-icon-cold-drink",
+                            href: "/#/demo/life-cycle",
+                        },
+                        {
+                            title: "上万条列表数据的处理",
+                            icon: "el-icon-potato-strips",
+                            href: "/#/demo/life-cycle",
+                        },
+                        {
+                            title: "控制请求的并发数量",
+                            icon: "el-icon-coffee-cup",
+                            href: "/#/demo/life-cycle",
+                        },
+                        {
+                            title: "复杂表单",
+                            icon: "el-icon-grape",
+                            href: "/#/demo/life-cycle",
+                        },
+                        {
+                            title: "前端水印",
+                            icon: "el-icon-grape",
+                            href: "/#/demo/life-cycle",
+                        },
+                        {
+                            title: "大文件断点续传",
+                            icon: "el-icon-grape",
+                            href: "/#/demo/life-cycle",
+                        },
+                        {
+                            title: "渲染大数据（非虚拟列表）",
+                            // 渲染大数据时，合理使用createDocumentFragment和requestAnimationFrame，将操作切分为一小段一小段执行。
+                            icon: "el-icon-grape",
                             href: "/#/demo/life-cycle",
                         },
                     ],
