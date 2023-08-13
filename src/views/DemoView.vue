@@ -1,7 +1,9 @@
 <template>
     <div class="page-wrap">
         <div v-for="instance in instanceList" :key="instance.label">
-            <div class="label">{{ instance.label }}</div>
+            <div class="label">
+                {{ instance.label }}
+            </div>
             <el-divider></el-divider>
             <div class="card-wrap">
                 <el-card
@@ -42,11 +44,6 @@ export default {
                             href: "/#/demo/watch-computed",
                         },
                         {
-                            title: "组件间数据传递",
-                            icon: "el-icon-cold-drink",
-                            href: "/#/demo/life-cycle",
-                        },
-                        {
                             title: "动态组件 & 异步组件",
                             icon: "el-icon-cold-drink",
                             href: "/#/demo/life-cycle",
@@ -76,6 +73,16 @@ export default {
                             icon: "el-icon-sunrise",
                             href: "/#/demo/life-cycle",
                         },
+                        {
+                            title: "keep-alive的实现",
+                            icon: "el-icon-coin",
+                            href: "/#/demo/life-cycle",
+                        },
+                        {
+                            title: "nextTick的实现",
+                            icon: "el-icon-present",
+                            href: "/#/demo/life-cycle",
+                        },
                     ],
                 },
                 {
@@ -92,8 +99,8 @@ export default {
                     label: "开发实践",
                     subInstanceList: [
                         {
-                            title: "生命周期",
-                            icon: "el-icon-ice-cream-round",
+                            title: "组件间数据传递",
+                            icon: "el-icon-cold-drink",
                             href: "/#/demo/life-cycle",
                         },
                     ],
