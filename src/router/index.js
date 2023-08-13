@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import DemoView from "../views/DemoView.vue";
 import LifeCycleView from "../views/demo/LifeCycleView.vue";
-import WatchCoputedView from "../views/demo/WatchCoputedView.vue";
+import DynamicsCompView from "../views/demo/DynamicsCompView.vue";
 import MemberView from "../views/MemberView.vue";
 import MemberList from "../views/MemberList.vue";
 import MemberListDetail from "../views/MemberListDetail.vue";
@@ -29,8 +29,8 @@ const routes = [
         component: LifeCycleView,
     },
     {
-        path: "/demo/watch-computed",
-        component: WatchCoputedView,
+        path: "/demo/dynamics-comp",
+        component: DynamicsCompView,
     },
     {
         path: "/member",

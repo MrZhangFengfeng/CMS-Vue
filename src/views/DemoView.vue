@@ -41,12 +41,12 @@ export default {
                         {
                             title: "watch 和 computed",
                             icon: "el-icon-sugar",
-                            href: "/#/demo/watch-computed",
+                            href: "/#/member/member-card/edit",
                         },
                         {
-                            title: "动态组件 & 异步组件",
+                            title: "异步组件",
                             icon: "el-icon-cold-drink",
-                            href: "/#/demo/life-cycle",
+                            href: "/#/demo/dynamics-comp",
                         },
                         {
                             title: "slots() 和 children 对比",
